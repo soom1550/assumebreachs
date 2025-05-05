@@ -1,49 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File & URL Scanner</title>
+    <title>اختبار الروابط والملفات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css"> <!-- تأكد من ربط ملف CSS -->
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Secure File & URL Scanner</h1>
-            <p>تحليل روابط وملفاتك بأعلى درجات الأمان.</p>
+            <h1>اختبار الرابط</h1>
+            <p>أدخل الرابط الذي ترغب في فحصه</p>
         </header>
-        
-        <main>
-            <div class="scan-box">
-                <h2>إجراء فحص</h2>
-                <form id="scan-form">
-                    <div class="input-group">
-                        <label for="file-upload">رفع ملف للتحليل</label>
-                        <input type="file" id="file-upload" name="file" />
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="url-input">أو أدخل رابط لتحليله</label>
-                        <input type="text" id="url-input" name="url" placeholder="https://example.com" />
-                    </div>
-                    
-                    <button type="submit" id="scan-button">
-    <i class="fas fa-search"></i> ابدأ الفحص
-</button>
 
-                </form>
-            </div>
+        <div class="scan-box">
+            <h2>ابدأ الفحص الآن</h2>
+            <form id="scan-form">
+                <div class="input-group">
+                    <label for="url">أدخل الرابط:</label>
+                    <input type="text" id="url" placeholder="أدخل الرابط هنا" required>
+                </div>
+                <button type="submit">
+                    <i class="fas fa-search"></i> ابدأ الفحص
+                </button>
+            </form>
+        </div>
 
-            <div id="result-box" class="hidden">
-                <h2>النتيجة:</h2>
-                <div id="result-content"></div>
+        <div id="loading-bar" class="hidden">
+            <div class="progress"></div>
+        </div>
+
+        <div id="result-box" class="hidden">
+            <h2>نتيجة الفحص:</h2>
+            <div id="result-content">
+                <!-- سيتم عرض النتيجة هنا -->
             </div>
-        </main>
-        
+        </div>
+
         <footer>
-            <p>&copy; 2025 Secure Scanner. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2025 جميع الحقوق محفوظة</p>
         </footer>
     </div>
 
