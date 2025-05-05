@@ -113,3 +113,46 @@ footer {
     font-size: 14px;
     color: #888;
 }
+
+/* تأثير الظهور التدريجي عند تحميل الصفحة */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* تطبيق التأثير على العناصر */
+.container {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* شريط التحميل */
+#loading-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #f0f0f0;
+    margin-top: 20px;
+    display: none;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    animation: loading 3s infinite;
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}
