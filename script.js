@@ -1,5 +1,9 @@
 document.getElementById('scan-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    
+    // إظهار شريط التحميل
+    document.getElementById('loading-bar').style.display = 'block'; // إظهار شريط التحميل
+    document.getElementById('result-box').style.display = 'none';  // إخفاء النتيجة القديمة
 
     const fileInput = document.getElementById('file-upload');
     const urlInput = document.getElementById('url-input');
@@ -15,19 +19,24 @@ document.getElementById('scan-form').addEventListener('submit', function(event) 
         formData.append('url', url);
     }
 
-    const resultBox = document.getElementById('result-box');
-    const resultContent = document.getElementById('result-content');
-    resultBox.style.display = 'none'; // إخفاء النتيجة القديمة قبل الفحص
-
+    // إجراء الفحص عبر API
     axios.post('https://your-app-name.onrender.com/scan', formData)
         .then(function(response) {
-            resultContent.innerHTML = `
+            // إخفاء شريط التحميل بعد الانتهاء
+            document.getElementById('loading-bar').style.display = 'none'; // إخفاء شريط التحميل
+
+            // عرض النتيجة
+            document.getElementById('result-content').innerHTML = `
                 <pre>${JSON.stringify(response.data, null, 2)}</pre>
             `;
-            resultBox.style.display = 'block'; // إظهار النتيجة بعد الفحص
+            document.getElementById('result-box').style.display = 'block'; // إظهار النتيجة بعد الفحص
         })
         .catch(function(error) {
-            resultContent.innerHTML = `حدث خطأ: ${error.message}`;
-            resultBox.style.display = 'block';
+            // إخفاء شريط التحميل بعد الخطأ
+            document.getElementById('loading-bar').style.display = 'none'; // إخفاء شريط التحميل
+
+            // عرض الخطأ
+            document.getElementById('result-content').innerHTML = `حدث خطأ: ${error.message}`;
+            document.getElementById('result-box').style.display = 'block';
         });
 });
